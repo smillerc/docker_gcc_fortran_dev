@@ -1,15 +1,15 @@
-FROM fedora:31
+FROM fedora:32
 
 RUN dnf install -y \
       make kernel-devel kernel-headers valgrind gdb \
-      libtool file gfortran g++ gcc m4 \
+      libtool file gfortran g++ gcc m4 OpenCoarrays-openmpi-devel \
       openmpi-devel openmpi cmake wget curl git \
       hdf5-devel zlib vim ack tmux tar libtsan libasan patch
 
 RUN dnf install -y python\
-      python3-numpy python3-matplotlib python3-h5py python3-pip python3-scipy
+      python3-numpy python3-matplotlib python3-h5py python3-pip python3-scipy python3-dask
 
-RUN pip install pint xarray fortran-language-server
+RUN pip install pint xarray fortran-language-server fypp black pre-commit
 
 ENV PATH="/usr/lib64/openmpi/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/usr/lib64:/usr/lib64/openmpi/lib:${LD_LIBRARY_PATH}"

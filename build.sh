@@ -1,4 +1,4 @@
 #!/bin/bash
-tag=9.3
+tag=latest
 docker build -t smillerc/gfortran-dev:${tag} -f Dockerfile .
-# docker push smillerc/gfortran-dev:${tag}
+docker push smillerc/gfortran-dev:${tag}
